@@ -53,9 +53,14 @@ func scanAsSplitInt(digit int) []int {
 		return arr
 	}
 
+	offset := len(arr) - len(input)
+	if offset < 0 {
+		_ = fmt.Errorf("[scanAsSplitInt] offset too small: %d", offset)
+	}
+
 	for i, c := range input {
 		var e error
-		arr[i], e = strconv.Atoi(string(c))
+		arr[offset+i], e = strconv.Atoi(string(c))
 		if e != nil {
 			_ = fmt.Errorf("[scanAsSplitInt] error scanning integer: %s", e)
 		}
