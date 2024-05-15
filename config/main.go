@@ -77,7 +77,7 @@ func scanAsString() string {
 // Sort
 /////////////////////////////
 
-func mergeSort(unsorted []int) []int {
+func mergeSort(unsorted []int, isAsc bool) []int {
 	if len(unsorted) < 2 {
 		return unsorted
 	}
@@ -85,15 +85,15 @@ func mergeSort(unsorted []int) []int {
 	mid := len(unsorted) / 2
 
 	// 再帰的に関数を実行してソート済のスライスを返す
-	left := mergeSort(unsorted[:mid])
-	right := mergeSort(unsorted[mid:])
+	left := mergeSort(unsorted[:mid], isAsc)
+	right := mergeSort(unsorted[mid:], isAsc)
 
 	sorted := make([]int, 0, len(left)+len(right))
 	i, j := 0, 0
 
 	// マージ
 	for i < len(left) && j < len(right) {
-		if left[i] <= right[j] {
+		if (isAsc && left[i] <= right[j]) || (!isAsc && left[i] >= right[j]) {
 			sorted = append(sorted, left[i])
 			i++
 		} else {
@@ -102,7 +102,7 @@ func mergeSort(unsorted []int) []int {
 		}
 	}
 
-	// 残りを配列に追加
+	// 残りの要素を追加
 	sorted = append(sorted, left[i:]...)
 	sorted = append(sorted, right[j:]...)
 
