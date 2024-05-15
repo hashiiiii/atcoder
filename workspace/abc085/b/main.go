@@ -34,17 +34,9 @@ func main() {
 		return arr[i] > arr[j]
 	})
 
-	m := make(map[int]struct{}, n)
-	var uniq []int
-	for _, e := range arr {
-		if _, ok := m[e]; ok {
-			continue
-		}
-		m[e] = struct{}{}
-		uniq = append(uniq, e)
-	}
+	arr = distinct(arr)
 
-	_, err := fmt.Fprintln(w, len(uniq))
+	_, err := fmt.Fprintln(w, len(arr))
 	if err != nil {
 		panic(err)
 	}
@@ -61,6 +53,19 @@ func scanAsInt() int {
 		_ = fmt.Errorf("[scanAsInt] error scanning integer: %s", e)
 	}
 	return i
+}
+
+func distinct[T comparable](dup []T) []T {
+	m := make(map[T]struct{}, len(dup)) // ジェネリック型のマップを初期化
+	var uniq []T                        // ユニークな要素を保持するスライス
+	for _, e := range dup {
+		if _, ok := m[e]; ok {
+			continue // 既に存在する場合はスキップ
+		}
+		m[e] = struct{}{}      // マップに要素を追加
+		uniq = append(uniq, e) // ユニークスライスに要素を追加
+	}
+	return uniq
 }
 
 func scanAsSplitInt(digit int) []int {

@@ -110,6 +110,23 @@ func mergeSort(unsorted []int, isAsc bool) []int {
 }
 
 /////////////////////////////
+// distinct
+/////////////////////////////
+
+func distinct[T comparable](dup []T) []T {
+	m := make(map[T]struct{}, len(dup))
+	var uniq []T
+	for _, e := range dup {
+		if _, ok := m[e]; ok {
+			continue
+		}
+		m[e] = struct{}{}
+		uniq = append(uniq, e)
+	}
+	return uniq
+}
+
+/////////////////////////////
 // Config
 /////////////////////////////
 
