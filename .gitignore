@@ -1,3 +1,2 @@
 .idea/
-**/test/
-**/contest.acc.json
+tests/
