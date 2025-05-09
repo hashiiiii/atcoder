@@ -18,11 +18,64 @@ func init() {
 	sc.Split(bufio.ScanWords)
 }
 
+func calc(a int, b int, c int) int {
+	return 10000*a + 5000*b + 1000*c
+}
+
 func main() {
 	defer flush()
 
 	// Implement
+	n, y := scanAsInt(), scanAsInt()
 
+	a := 0 // 10000
+	b := 0 // 5000
+	c := 0 // 1000
+
+	isDone := false
+
+	for a = 0; a <= n-b-c; a++ {
+		if a+b+c == n && calc(a, b, c) == y {
+			isDone = true
+			break
+		}
+		if a+b+c >= n || calc(a, b, c) >= y {
+			a = 0
+			break
+		}
+		for b = 0; b <= n-a; b++ {
+			if a+b+c == n && calc(a, b, c) == y {
+				isDone = true
+				break
+			}
+			if a+b+c >= n || calc(a, b, c) >= y {
+				b = 0
+				break
+			}
+			for c = 0; c <= n-a-b; c++ {
+				if a+b+c == n && calc(a, b, c) == y {
+					isDone = true
+					break
+				}
+				if a+b+c >= n || calc(a, b, c) >= y {
+					c = 0
+					break
+				}
+			}
+			if isDone {
+				break
+			}
+		}
+		if isDone {
+			break
+		}
+	}
+
+	if isDone {
+		fmt.Printf("%d %d %d\n", a, b, c)
+	} else {
+		fmt.Println("-1 -1 -1")
+	}
 }
 
 /////////////////////////////
