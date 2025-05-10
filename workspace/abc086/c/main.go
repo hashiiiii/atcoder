@@ -22,7 +22,24 @@ func main() {
 	defer flush()
 
 	// Implement
+	i := 0
+	cx, cy := 0, 0
+	n := scanAsInt()
+	for i < n {
+		t, x, y := scanAsInt(), scanAsInt(), scanAsInt()
+		cx, cy = x, y
+		// x + y <= t && (x + y - t) % 2 = 0 -> yes, = 1 -> no
+		if int(math.Abs(float64(x+y))) <= t && (x+y-t)%2 == 0 && int(math.Abs(float64(x-cx+y-cy))) <= t {
+			i++
+		} else {
+			fmt.Println("No")
+			return
+		}
+	}
 
+	if i == n {
+		fmt.Println("Yes")
+	}
 }
 
 /////////////////////////////
