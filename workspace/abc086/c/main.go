@@ -77,16 +77,6 @@ func scanAsString() string {
 // Sort
 /////////////////////////////
 
-func reverseString(s string) string {
-	b := []byte(s)
-	size := len(b)
-	// あまりは切り捨てられる
-	for i := 0; i < size/2; i++ {
-		b[i], b[size-1-i] = b[size-1-i], b[i]
-	}
-	return string(b)
-}
-
 func mergeSort(unsorted []int, isAsc bool) []int {
 	if len(unsorted) < 2 {
 		return unsorted
