@@ -9,7 +9,12 @@
       "id": "typical90_a",
       "label": "001",
       "title": "Yokan Party（★4）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_a"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_a",
+      "directory": {
+        "path": "001",
+        "testdir": "tests",
+        "submit": "main.go"
+      }
     },
     {
       "id": "typical90_b",
@@ -68,7 +73,12 @@
       "id": "typical90_j",
       "label": "010",
       "title": "Score Sum Queries（★2）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_j"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_j",
+      "directory": {
+        "path": "010",
+        "testdir": "tests",
+        "submit": "main.go"
+      }
     },
     {
       "id": "typical90_k",
