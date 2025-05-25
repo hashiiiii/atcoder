@@ -19,8 +19,8 @@ func init() {
 }
 
 type Test struct {
-	Class int
-	Score int
+	One int
+	Two int
 }
 
 func main() {
@@ -29,29 +29,35 @@ func main() {
 	// Implement
 	n := scanAsInt()
 	scores := make([]Test, n)
-	for i := 0; i < n; i++ {
-		c, p := scanAsInt(), scanAsInt()
-		scores[i] = Test{
-			Class: c,
-			Score: p,
-		}
-	}
-	q := scanAsInt()
 	one := 0
 	two := 0
+	for i := 0; i < n; i++ {
+		c, p := scanAsInt(), scanAsInt()
+		if c == 1 {
+			one += p
+		} else if c == 2 {
+			two += p
+		}
+		scores[i] = Test{
+			One: one,
+			Two: two,
+		}
+		//fmt.Fprintf(w, "i: %d, c: %d, One: %d, Two: %d\n", i, c, one, two)
+	}
+
+	q := scanAsInt()
 	for i := 0; i < q; i++ {
 		l, r := scanAsInt(), scanAsInt()
-		tmp := scores[l-1 : r]
-		for _, test := range tmp {
-			if test.Class == 1 {
-				one += test.Score
-			} else {
-				two += test.Score
-			}
+		var aa1 Test
+		var bb1 Test
+		if l < 2 {
+			aa1.One = 0
+			aa1.Two = 0
+		} else {
+			aa1 = scores[l-2]
 		}
-		fmt.Fprintf(w, "%d %d\n", one, two)
-		one = 0
-		two = 0
+		bb1 = scores[r-1]
+		fmt.Fprintf(w, "%d %d\n", bb1.One-aa1.One, bb1.Two-aa1.Two)
 	}
 }
 
