@@ -19,43 +19,64 @@ func init() {
 	sc.Split(bufio.ScanWords)
 }
 
+//func main() {
+//	defer flush()
+//
+//	// Implement
+//	n, m := scanAsInt(), scanAsInt()
+//	ma := make(map[int]int, m)
+//	s := 0
+//	//bools := make(map[int]bool, n)
+//	for i := 0; i < m; i++ {
+//		left, right := scanAsInt(), scanAsInt()
+//		c := left
+//		for right >= c {
+//			ma[c-1] += 1
+//			if c > s {
+//				s = c
+//			}
+//			c++
+//		}
+//	}
+//	var keys []int
+//	for _, v := range ma {
+//		keys = append(keys, v)
+//	}
+//	sort.SliceStable(keys, func(i, j int) bool {
+//		return keys[i] < keys[j]
+//	})
+//	if s != n {
+//		fmt.Fprintln(w, 0)
+//	} else {
+//		fmt.Println(keys[0])
+//
+//	}
+//}
+
 func main() {
 	defer flush()
 
 	// Implement
 	n, m := scanAsInt(), scanAsInt()
-	ma := make(map[int]int, m)
-	s := 0
-	//bools := make(map[int]bool, n)
+	imos := make([]int, n+1)
 	for i := 0; i < m; i++ {
 		left, right := scanAsInt(), scanAsInt()
-		c := left
-		for right >= c {
-			ma[c-1] += 1
-			if c > s {
-				s = c
-			}
-			c++
-		}
+		imos[left-1] += 1
+		imos[right] -= 1
 	}
 	var keys []int
-	for _, v := range ma {
-		keys = append(keys, v)
-		//if i == 0 {
-		//	continue
-		//} else {
-		//
-		//}
+	sum := 0
+	for i, imo := range imos {
+		if i == n {
+			break
+		}
+		sum += imo
+		keys = append(keys, sum)
 	}
 	sort.SliceStable(keys, func(i, j int) bool {
 		return keys[i] < keys[j]
 	})
-	if s != n {
-		fmt.Fprintln(w, 0)
-	} else {
-		fmt.Println(keys[0])
-
-	}
+	fmt.Println(keys[0])
 }
 
 /////////////////////////////
