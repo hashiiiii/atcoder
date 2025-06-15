@@ -20,13 +20,23 @@
       "id": "typical90_b",
       "label": "002",
       "title": "Encyclopedia of Parentheses（★3）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_b"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_b",
+      "directory": {
+        "path": "002",
+        "testdir": "tests",
+        "submit": "main.go"
+      }
     },
     {
       "id": "typical90_c",
       "label": "003",
       "title": "Longest Circular Road（★4）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_c"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_c",
+      "directory": {
+        "path": "003",
+        "testdir": "tests",
+        "submit": "main.go"
+      }
     },
     {
       "id": "typical90_d",
@@ -150,7 +160,12 @@
       "id": "typical90_v",
       "label": "022",
       "title": "Cubic Cake（★2）",
-      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_v"
+      "url": "https://atcoder.jp/contests/typical90/tasks/typical90_v",
+      "directory": {
+        "path": "022",
+        "testdir": "tests",
+        "submit": "main.go"
+      }
     },
     {
       "id": "typical90_w",
